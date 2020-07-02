@@ -1,0 +1,9 @@
+@import "src/styles";
+
+footer {
+  position: absolute;
+  bottom: 0;
+  line-height: 60px;
+  background-color: $neutralGrey;
+  width: 100%;
+}
