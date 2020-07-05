@@ -1,1 +1,10 @@
-<p>auth works!</p>
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" [class]="{ active: authComponentToDisplay === 'login' }" (click)="onDisplayLogin()">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class]="{ active: authComponentToDisplay === 'signup' }" (click)="onDisplaySignUp()">Sign up</a>
+  </li>
+</ul>
+<app-login *ngIf="authComponentToDisplay === 'login'"></app-login>
+<app-signup *ngIf="authComponentToDisplay === 'signup'"></app-signup>

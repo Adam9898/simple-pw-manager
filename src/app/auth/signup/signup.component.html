@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center align-items-center container col-10 col-sm-6">
+  <div class="row">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" [appMatchPassword]="['password', 'rePassword']">
+      <div class="form-group">
+        <label for="sign-up-mail">Email address</label>
+        <input ngModel="" type="email" class="form-control" id="sign-up-mail" aria-describedby="emailHelp"
+               placeholder="Enter email" name="email" required email appValidateUniqueEmail #email="ngModel">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div *ngIf="email.errors !== null && email.errors.required && email.touched" id="invalid-feedback-email-required" class="invalid-feedback">
+          Please choose an email address.
+        </div>
+        <div *ngIf="email.errors !== null && email.errors.email && email.touched" id="invalid-feedback-email-email" class="invalid-feedback">
+          You must provide a valid email address.
+        </div>
+        <div *ngIf="email.errors !== null && email.errors.maxLength && email.touched" id="invalid-feedback-email-length" class="invalid-feedback">
+          The maximum length for the email 50 characters long.
+        </div>
+        <div *ngIf="email.errors !== null && email.errors.emailNotAvailable && email.touched" id="invalid-feedback-email-unique" class="invalid-feedback">
+          The email address entered is already in use. Please choose another one.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input ngModel type="password" class="form-control" id="exampleInputPassword1" placeholder="Master password"
+               required name="password" minlength="8" maxlength="40" #password="ngModel">
+        <small id="passwordHelp" class="form-text text-muted">Choose a strong master password. Tip: Use our password generator</small>
+        <div *ngIf="password.errors !== null && password.errors.required && password.touched" id="invalid-feedback-password-required" class="invalid-feedback">
+          Please choose a password.
+        </div>
+        <div *ngIf="password.errors !== null && password.errors.minlength && password.touched" id="invalid-feedback-password-minlength" class="invalid-feedback">
+          Password has to be at least 8 characters long.
+        </div>
+        <div *ngIf="password.errors !== null && password.errors.maxlength && password.touched" id="invalid-feedback-password-maxlength" class="invalid-feedback">
+          Password can only be 40 characters long maximum.
+        </div>
+        <label for="re-password">Re-enter password</label>
+        <input ngModel type="password" class="form-control" id="re-password" placeholder="Master password again" name="rePassword" required #rePassword="ngModel">
+        <div *ngIf="rePassword.errors !== null && rePassword.errors.required && rePassword.touched" id="invalid-feedback-re-password-required" class="invalid-feedback">
+          Please re-enter your password.
+        </div>
+        <div *ngIf="rePassword.errors !== null && rePassword.errors.passwordMismatch && rePassword.touched" id="invalid-feedback-re-password-match" class="invalid-feedback">
+          The re-entered password differs from the original.
+        </div>
+
+      </div>
+      <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

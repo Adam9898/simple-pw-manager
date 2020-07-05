@@ -1,0 +1,13 @@
+@import "src/styles";
+
+.row {
+  flex-grow: 1;
+}
+
+form {
+  margin-top: $topMarginSeparator;
+  flex-grow: 1;
+  /*input.ng-invalid.ng-touched {
+    @extend .is-invalid;
+  }*/
+}

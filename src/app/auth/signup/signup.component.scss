@@ -1,0 +1,10 @@
+@import "src/styles";
+
+.row {
+  flex-grow: 1;
+}
+
+form {
+  margin-top: $topMarginSeparator;
+  flex-grow: 1;
+}

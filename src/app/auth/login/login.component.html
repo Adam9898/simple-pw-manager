@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center align-items-center container col-10 col-sm-6">
+  <div class="row">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input ngModel type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+             placeholder="Enter email" name="email" required email #email="ngModel">
+      <div *ngIf="email.errors !== null && email.errors.required && email.touched" id="invalid-feedback-email-required" class="invalid-feedback">
+        Please choose an email address.
+      </div>
+      <div *ngIf="email.errors !== null && email.errors.email && email.touched" id="invalid-feedback-email-email" class="invalid-feedback">
+        You must provide a valid email address.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input ngModel type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+             name="password" required #password="ngModel">
+      <div *ngIf="password.errors !== null && password.errors.required && password.touched" class="invalid-feedback">
+        Please choose a password.
+      </div>
+    </div>
+  <div *ngIf="loginIsInvalid" class="invalid-feedback">
+    Invalid credentials.
+  </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
+</form>
+  </div>
+</div>
