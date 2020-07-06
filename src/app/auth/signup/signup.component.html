@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" [appMatchPassword]="['password', 'rePassword']">
       <div class="form-group">
         <label for="sign-up-mail">Email address</label>
-        <input ngModel="" type="email" class="form-control" id="sign-up-mail" aria-describedby="emailHelp"
+        <input ngModel type="email" class="form-control" id="sign-up-mail" aria-describedby="emailHelp"
                placeholder="Enter email" name="email" required email appValidateUniqueEmail #email="ngModel">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         <div *ngIf="email.errors !== null && email.errors.required && email.touched" id="invalid-feedback-email-required" class="invalid-feedback">

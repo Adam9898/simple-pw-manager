@@ -1,1 +1,16 @@
-<p>pw-generator works!</p>
+<div class="card mt-5 col-sm-6">
+  <div class="card-body">
+    <h5 class="text-center card-title">Generate a random password for yourself</h5>
+    <form (ngSubmit)="onPasswordGenerate(length.value)" #f="ngForm">
+      <div class="form-group">
+        <label for="password-length">Password length</label>
+        <input (input)="onPasswordGenerate(length.value)" ngModel class="form-control" id="password-length"
+               name="passwordLength" type="number" required min="1" max="50" #length="ngModel">
+        <small class="form-text text-muted">Set the desired length of the password you want to generate.</small>
+        <label for="generated-password">Generated password</label>
+        <input [value]="password" class="form-control" id="generated-password" type="text" readonly #generated>
+      </div>
+      <button [disabled]="!f.valid" class="btn btn-success" type="submit">Generate</button>
+    </form>
+  </div>
+</div>

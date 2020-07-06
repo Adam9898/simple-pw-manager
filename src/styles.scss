@@ -21,3 +21,7 @@ input.ng-invalid.ng-touched {
 .invalid-feedback {
   display: block;
 }
+
+button[disabled] {
+  cursor: not-allowed;
+}
