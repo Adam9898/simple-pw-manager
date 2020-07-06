@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit {
     return this.authService.authenticated;
   }
 
+  // todo redo
   get navLink() {
-    let link = '/auth';
+    let link = '/main';
     if (this.authService.authenticated) {
       link = '/main';
     }

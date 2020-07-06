@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 export class PwGeneratorCryptoService {
 
   constructor() {
@@ -27,7 +25,7 @@ export class PwGeneratorCryptoService {
         l = m % 256;
       } while (l < t);
     }
-    return Math.trunc(m / 256); // String.fromCharCode works with decimal numbers too, but I thoughts this is a but more elegant
+    return Math.trunc(m / 256); // String.fromCharCode works with decimal numbers too, but IMO this is more elegant
   }
 
   generateRandomAsci() {

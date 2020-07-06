@@ -14,6 +14,8 @@ import { MatchPasswordDirective } from './validation/match-password.directive';
 import { ValidateUniqueEmailDirective } from './validation/validate-unique-email.directive';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import { MainComponent } from './main/main.component';
+import { PwFieldComponent } from './main/pw-field/pw-field.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {ToastrModule} from 'ngx-toastr';
     LoginComponent,
     SignupComponent,
     MatchPasswordDirective,
-    ValidateUniqueEmailDirective
+    ValidateUniqueEmailDirective,
+    MainComponent,
+    PwFieldComponent
   ],
   imports: [
     BrowserModule,
