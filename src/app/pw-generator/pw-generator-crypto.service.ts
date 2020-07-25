@@ -1,3 +1,8 @@
+import {Injectable} from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class PwGeneratorCryptoService {
 
   constructor() {
@@ -28,14 +33,14 @@ export class PwGeneratorCryptoService {
     return Math.trunc(m / 256); // String.fromCharCode works with decimal numbers too, but IMO this is more elegant
   }
 
-  generateRandomAsci() {
+  generateRandomAscii() {
     return this.generateRandomNumber(95) + 32;
   }
 
   generatePassword(length: number) {
     let password = '';
     for (let i = 0; i < length; i++) {
-      password += String.fromCharCode(this.generateRandomAsci());
+      password += String.fromCharCode(this.generateRandomAscii());
     }
     return password;
   }

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PwGeneratorComponent } from './pw-generator.component';
+import {TOAST_CONFIG, ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
 
 describe('PwGeneratorComponent', () => {
   let component: PwGeneratorComponent;
@@ -8,7 +11,12 @@ describe('PwGeneratorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PwGeneratorComponent ]
+      declarations: [ PwGeneratorComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        FormsModule
+      ]
     })
     .compileComponents();
   }));

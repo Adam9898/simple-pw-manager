@@ -1,8 +1,6 @@
 import { ValidateUniqueEmailDirective } from './validate-unique-email.directive';
+import {TestBed} from '@angular/core/testing';
 
 describe('ValidateUniqueEmailDirective', () => {
-  it('should create an instance', () => {
-    const directive = new ValidateUniqueEmailDirective();
-    expect(directive).toBeTruthy();
-  });
+
 });

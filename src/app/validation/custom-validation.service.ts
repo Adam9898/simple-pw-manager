@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {CheckEmailResponse} from './CheckEmailResponse';
+import {environment} from '../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomValidationService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {  }
 
   MatchPassword(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
@@ -30,21 +35,22 @@ export class CustomValidationService {
   }
 
   emailValidator(userControl: AbstractControl) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        if (this.validateEmail(userControl.value)) {
-          resolve({ emailNotAvailable: true });
+    return new Promise((resolve, reject) => {
+      this.validateEmail(userControl.value)
+      .subscribe((result: CheckEmailResponse) => {
+        if (result.valid) {
+          resolve({ valid: true });
         } else {
           resolve(null);
         }
-      }, 1000);
-      console.log('timeout ended');
+      }, error => {
+        reject(error);
+      });
     });
   }
 
-  validateEmail(userName: string): boolean {
-    // todo reach out to server
-    return true;
+  validateEmail(email: string) {
+    return this.httpClient.post('/users/check-email', { email });
   }
 
 }
