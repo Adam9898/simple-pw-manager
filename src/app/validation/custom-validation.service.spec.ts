@@ -38,8 +38,8 @@ describe('CustomValidationService', () => {
       }
     }(null, null);
     control.value = 'test@valid.com';
-    const result = await service.emailValidator(control);
-    expect(result).toBeTrue();
+    const result: any = await service.emailValidator(control);
+    expect(result.valid).toBeTrue();
   });
 
 });

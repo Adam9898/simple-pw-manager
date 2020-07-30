@@ -39,9 +39,10 @@ export class CustomValidationService {
       this.validateEmail(userControl.value)
       .subscribe((result: CheckEmailResponse) => {
         if (result.valid) {
-          resolve({ valid: true });
-        } else {
+          userControl.setErrors(null);
           resolve(null);
+        } else {
+          userControl.setErrors({ emailNotAvailable: true });
         }
       }, error => {
         reject(error);
@@ -50,7 +51,7 @@ export class CustomValidationService {
   }
 
   validateEmail(email: string) {
-    return this.httpClient.post('/users/check-email', { email });
+    return this.httpClient.post(environment.host + '/users/check-email', { email });
   }
 
 }

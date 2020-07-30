@@ -20,7 +20,7 @@
         Please choose a password.
       </div>
     </div>
-  <div *ngIf="loginIsInvalid" class="invalid-feedback">
+  <div *ngIf="!loginIsValid" class="invalid-feedback">
     Invalid credentials.
   </div>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>

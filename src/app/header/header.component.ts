@@ -10,21 +10,20 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   get authentication() {
-    return this.authService.authenticated;
+    return this.authService.isAuthenticated();
   }
 
   get navLink() {
     let link = '/auth';
-    if (this.authService.authenticated) {
+    if (this.authService.isAuthenticated()) {
       link = '/main';
     }
     return link;
   }
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.router.navigate([this.navLink]);
   }
 
 }
